@@ -6,14 +6,10 @@ if [ -e hoge ]; then
 	rm hoge
 fi
 
-echo "input argument"
-read arg
-
-
-echo $arg | `awk '{print sqrt($1)}' > tmp`
+echo $1 | `awk '{print sqrt($0)}' > tmp`
 seqn=`cat tmp`
 for i in `seq 2 1 $seqn`
-do amari=$(( arg % i))
+do amari=$(( $1 % i))
 	if [ $amari = 0 ] ; then
 		echo "There is a number that can divide." >hoge
 	else
